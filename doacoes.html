@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doações e Parcerias</title>
+    <link rel="icon" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              customgreen: "#175850",
+              lightgreen: "#4ade80", // verde claro para o título
+              bgdark: "#0f172a",
+            },
+          },
+        },
+      };
+
+      // Carrossel de Parceiros - versão corrigida
+      document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById("partnersCarousel");
+        const prevBtn = document.getElementById("prevPartner");
+        const nextBtn = document.getElementById("nextPartner");
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        // Função para rolar um item por vez
+        const scrollOneItem = (direction) => {
+          // Pega o primeiro item visível para calcular a largura
+          const firstItem = carousel.querySelector(".flex-shrink-0");
+          if (!firstItem) return;
+
+          const itemWidth = firstItem.offsetWidth + 24; // +24 para incluir o gap (space-x-6 = 1.5rem = 24px)
+          const scrollAmount = direction === "next" ? itemWidth : -itemWidth;
+
+          carousel.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+          });
+        };
+
+        // Eventos dos botões
+        prevBtn.addEventListener("click", () => scrollOneItem("prev"));
+        nextBtn.addEventListener("click", () => scrollOneItem("next"));
+      });
+    </script>
+  </head>
+  <body class="bg-bgdark text-slate-200 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Cabeçalho -->
+      <header class="text-center py-6 flex flex-col items-center mb-2">
+        <img src="images/logo.png" alt="Logo" class="w-16 h-16 mb-3" />
+        <h1 class="text-2xl font-bold text-lightgreen">INSTITUTO CASA VERDE</h1>
+      </header>
+
+      <!-- Seção: Doações -->
+      <section class="mb-12">
+        <h1 class="text-xl font-semibold mb-6 text-center">Doações</h1>
+
+        <!-- Card 1: Doação Pontual -->
+        <div class="text-center bg-slate-800 rounded-xl p-6 mb-8 shadow-lg">
+          <h3 class="text-lg font-bold text-green-400 mb-3">Doação Pontual</h3>
+          <p class="text-slate-300 mb-4">
+            A sua doação pontual é vital para mantermos nossas atividades e
+            projetos em andamento. <br />
+            Você pode doar via <strong>PIX (CNPJ)</strong>:
+            <span class="font-mono bg-slate-700 px-2 py-1 rounded"
+              >60.190.420/0001-00</span
+            >
+          </p>
+          <div class="flex justify-center mb-4">
+            <img
+              src="images/doacoes/qrcode_pix.png"
+              alt="QR Code PIX"
+              class="w-32 h-32 object-contain"
+            />
+          </div>
+          <p class="text-slate-400 text-sm">
+            Após a doação, se desejar um recibo, envie o comprovante para o
+            nosso email de contato.
+          </p>
+        </div>
+
+        <!-- Card 2: Seja um Associado -->
+        <div class="text-center bg-slate-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-lg font-bold text-green-400 mb-3">
+            Seja um Associado
+          </h3>
+          <p class="text-slate-300 mb-4">
+            Ao se tornar um Associado, você garante um fluxo contínuo de apoio
+            que nos permite planejar projetos de longo prazo e causar um impacto
+            ainda maior.
+          </p>
+          <div class="text-center">
+            <a
+              href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=3cf4737d94714d6191bee3e4e6d6d121"
+              target="_blank"
+              rel="noopener"
+              class="inline-block bg-cyan-600 hover:bg-cyan-500 text-white py-2 px-6 rounded-lg font-medium transition"
+            >
+              Quero me Associar
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Parceiros (Carrossel Horizontal) -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-6 text-center">Nossos Parceiros</h2>
+
+        <!-- Carrossel -->
+        <div class="relative">
+          <!-- Botões de navegação -->
+          <button
+            id="prevPartner"
+            class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-full shadow-lg transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button
+            id="nextPartner"
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-full shadow-lg transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          <!-- Container do carrossel -->
+          <div
+            id="partnersCarousel"
+            class="flex overflow-x-auto space-x-6 py-4 px-6 scrollbar-hide snap-x snap-mandatory"
+          >
+            <!-- Parceiro 1 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="images/parceiros/jo_esportes.jpg"
+                alt="Parceiro 1"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"
+              />
+              <h3 class="font-bold text-green-400 mb-1">JÔ ESPORTES</h3>
+              <p class="text-slate-300 text-sm">
+                Jô Esportes é a nova loja do Shopping da Vila - 11 98747-2002
+              </p>
+            </div>
+
+            <!-- Parceiro 2 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="images/parceiros/havan.jpg"
+                alt="Parceiro 2"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"
+              />
+              <h3 class="font-bold text-green-400 mb-1">HAVAN KIDS</h3>
+              <p class="text-slate-300 text-sm">
+                Colabora com nossa iniciativa de sustentabilidade urbana.
+              </p>
+            </div>
+
+            <!-- Parceiro 3 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="images/parceiros/comunicacao-visual.jpg"
+                alt="Parceiro 3"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"
+              />
+              <h3 class="font-bold text-green-400 mb-1">KM COMUNICAÇÃO VISUAL</h3>
+              <p class="text-slate-300 text-sm">
+                Tudo para a identidade visual da sua marca, negócio da sua empresa.
+              </p>
+            </div>
+
+            <!-- Parceiro 4 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="images/parceiros/mat_construcao.jpg"
+                alt="Parceiro 4"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"Tudo
+              />
+              <h3 class="font-bold text-green-400 mb-1">DCAMS COMERCIAL</h3>
+              <p class="text-slate-300 text-sm">
+                Especializada em materiais de construção
+              </p>
+            </div>
+
+            <!-- Parceiro 5 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="https://via.placeholder.com/250/1e293b/cbd5e1?text=Parceiro+5"
+                alt="Parceiro 5"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"
+              />
+              <h3 class="font-bold text-green-400 mb-1">Nome do Parceiro 5</h3>
+              <p class="text-slate-300 text-sm">
+                Investe em tecnologia para nossos projetos sociais.
+              </p>
+            </div>
+
+            <!-- Parceiro 6 -->
+            <div
+              class="flex-shrink-0 w-64 snap-start bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src="https://via.placeholder.com/250/1e293b/cbd5e1?text=Parceiro+6"
+                alt="Parceiro 6"
+                class="w-full h-auto max-h-35 object-contain rounded-lg mb-3"
+              />
+              <h3 class="font-bold text-green-400 mb-1">Nome do Parceiro 6</h3>
+              <p class="text-slate-300 text-sm">
+                Apoia nossas ações de saúde e bem-estar.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center text-slate-500 mt-6 text-sm">
+          Se sua empresa deseja ser parceira, entre em contato pelo email:
+          <a
+            href="mailto:contato@institutocasaverde.org.br"
+            class="text-cyan-400 hover:underline"
+            >contato@institutocasaverde.org.br</a
+          >
+        </p>
+      </section>
+
+      <footer class="text-center text-slate-500 text-sm mt-12 pb-8">
+        <a href="index.html" class="text-cyan-400 hover:underline"
+          >&larr; Voltar</a
+        >
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Árvore de Links</title>
+    <link rel="icon" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              customgreen: "#175850",
+              cardbg: "rgba(15, 23, 42, 0.85)", // fundo escuro translúcido para contraste
+              lightgreen: "#4ade80", // verde claro para o título
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Garante que a div com aspect-[9/16] funcione mesmo em telas muito largas */
+      .container-box {
+        max-height: 90vh;
+        max-width: calc(90vh * 9 / 16);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-customgreen min-h-screen flex items-center justify-center p-4"
+  >
+    <!-- Caixa com proporção 9:16 -->
+    <div
+      class="container-box w-full aspect-[9/16] flex items-center justify-center"
+    >
+      <div
+        class="w-full h-full bg-cardbg rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+      >
+        <!-- Cabeçalho -->
+        <div class="text-center py-10 flex-shrink-0">
+          <img
+            src="images/logo.png"
+            alt="Logo"
+            class="w-20 h-20 rounded-full mx-auto mb-3 object-contain"
+          />
+          <h1 class="text-xl font-bold text-lightgreen">INSTITUTO CASA VERDE</h1>
+          <p class="text-slate-300 text-sm mt-1">Link Tree - ICV</p>
+        </div>
+
+        <!-- Links (rolagem interna se necessário) -->
+        <div
+          class="flex-grow overflow-y-auto px-6 pb-10 flex flex-col justify-center"
+        >
+          <div class="space-y-3">
+            <a
+              href="https://instagram.com/seu_perfil"
+              target="_blank"
+              rel="noopener"
+              class="block w-full bg-indigo-700 hover:bg-indigo-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://linkedin.com/in/seu_perfil"
+              target="_blank"
+              rel="noopener"
+              class="block w-full bg-blue-700 hover:bg-blue-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://seusite.com"
+              target="_blank"
+              rel="noopener"
+              class="block w-full bg-emerald-700 hover:bg-emerald-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              Meu Site
+            </a>
+            <a
+              href="projetos.html"
+              class="block w-full bg-purple-700 hover:bg-purple-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              Projetos e Eventos
+            </a>
+            <a
+              href="doacoes.html"
+              class="block w-full bg-amber-700 hover:bg-amber-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              Doações e Parcerias
+            </a>
+            <a
+              href="https://wa.me/5511918225870"
+              target="_blank"
+              rel="noopener"
+              class="block w-full bg-green-600 hover:bg-green-500 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              WhatsApp
+            </a>
+
+            <a
+              href="mailto:seu@email.com"
+              class="block w-full bg-rose-700 hover:bg-rose-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
+            >
+              Enviar E-mail
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
