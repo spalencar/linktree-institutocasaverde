@@ -6,138 +6,193 @@
     <title>Minha Árvore de Links</title>
     <link rel="icon" href="favicon.png" />
     <style>
-      /* Fallback visual enquanto o Tailwind carrega */
-      body {
-        background-color: #175850 !important;
-        color: white !important;
-        font-family: system-ui, sans-serif;
+      /* Reset básico */
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
-      .logo-fallback {
-        max-width: 100px;
-        display: block;
-        margin: 2rem auto;
+
+      /* Cores personalizadas */
+      :root {
+        --customgreen: #175850;
+        --cardbg: rgba(15, 23, 42, 0.85);
+        --lightgreen: #4ade80;
+        --indigo-700: #4f46e5;
+        --indigo-600: #6366f1;
+        --blue-700: #1d4ed8;
+        --blue-600: #2563eb;
+        --emerald-700: #067647;
+        --emerald-600: #10b981;
+        --purple-700: #7e22ce;
+        --purple-600: #9333ea;
+        --amber-700: #b45309;
+        --amber-600: #d97706;
+        --green-600: #16a34a;
+        --green-500: #22c55e;
+        --rose-700: #be123c;
+        --rose-600: #e11d48;
+        --slate-300: #cbd5e1;
+        --white: #ffffff;
       }
-      .title-fallback {
-        text-align: center;
-        font-size: 1.5rem;
-        margin-top: 1rem;
+
+      body {
+        background-color: var(--customgreen);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
       }
-    </style>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              customgreen: "#175850",
-              cardbg: "rgba(15, 23, 42, 0.85)", // fundo escuro translúcido para contraste
-              lightgreen: "#4ade80", // verde claro para o título
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      /* Garante que a div com aspect-[9/16] funcione mesmo em telas muito largas */
+
       .container-box {
         max-height: 90vh;
         max-width: calc(90vh * 9 / 16);
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        width: 100%;
+        height: 100%;
+        background: var(--cardbg);
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        flex-shrink: 0;
+      }
+
+      .header img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: contain;
+        margin: 0 auto 0.75rem;
+      }
+
+      .header h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--lightgreen);
+      }
+
+      .header p {
+        color: var(--slate-300);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      .links-container {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 0 1.5rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .link-btn {
+        display: block;
+        width: 100%;
+        padding: 0.625rem 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        font-weight: 500;
+        color: var(--white);
+        text-decoration: none;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.2s ease-in-out;
+        margin-bottom: 0.75rem;
+      }
+
+      .link-btn:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Cores dos botões */
+      .btn-instagram { background-color: var(--indigo-700); }
+      .btn-instagram:hover { background-color: var(--indigo-600); }
+
+      .btn-linkedin { background-color: var(--blue-700); }
+      .btn-linkedin:hover { background-color: var(--blue-600); }
+
+      .btn-site { background-color: var(--emerald-700); }
+      .btn-site:hover { background-color: var(--emerald-600); }
+
+      .btn-projetos { background-color: var(--purple-700); }
+      .btn-projetos:hover { background-color: var(--purple-600); }
+
+      .btn-doacoes { background-color: var(--amber-700); }
+      .btn-doacoes:hover { background-color: var(--amber-600); }
+
+      .btn-whatsapp { background-color: var(--green-600); }
+      .btn-whatsapp:hover { background-color: var(--green-500); }
+
+      .btn-email { background-color: var(--rose-700); }
+      .btn-email:hover { background-color: var(--rose-600); }
+
+      /* Responsividade mínima (já herdada do flex) */
+      @media (max-width: 640px) {
+        .container-box {
+          max-width: 90vw;
+        }
+        .link-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.95rem;
+        }
       }
     </style>
   </head>
-  <body
-    class="bg-customgreen min-h-screen flex items-center justify-center p-4"
-  >
+  <body>
     <!-- Caixa com proporção 9:16 -->
-    <div
-      class="container-box w-full aspect-[9/16] flex items-center justify-center"
-    >
-      <div
-        class="w-full h-full bg-cardbg rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-      >
+    <div class="container-box">
+      <div class="card">
         <!-- Cabeçalho -->
-        <div class="text-center py-10 flex-shrink-0">
-          <img
-            src="images/logo.png"
-            alt="Logo"
-            class="w-20 h-20 rounded-full mx-auto mb-3 object-contain"
-          />
-          <h1 class="text-xl font-bold text-lightgreen">INSTITUTO CASA VERDE</h1>
-          <p class="text-slate-300 text-sm mt-1">Link Tree - ICV</p>
+        <div class="header">
+          <img src="images/logo.png" alt="Logo" />
+          <h1>INSTITUTO CASA VERDE</h1>
+          <p>Link Tree - ICV</p>
         </div>
 
-        <!-- Links (rolagem interna se necessário) -->
-        <div
-          class="flex-grow overflow-y-auto px-6 pb-10 flex flex-col justify-center"
-        >
-          <div class="space-y-3">
-            <a
-              href="https://instagram.com/seu_perfil"
-              target="_blank"
-              rel="noopener"
-              class="block w-full bg-indigo-700 hover:bg-indigo-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://linkedin.com/in/seu_perfil"
-              target="_blank"
-              rel="noopener"
-              class="block w-full bg-blue-700 hover:bg-blue-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://seusite.com"
-              target="_blank"
-              rel="noopener"
-              class="block w-full bg-emerald-700 hover:bg-emerald-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              Meu Site
-            </a>
-            <a
-              href="projetos.html"
-              class="block w-full bg-purple-700 hover:bg-purple-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              Projetos e Eventos
-            </a>
-            <a
-              href="doacoes.html"
-              class="block w-full bg-amber-700 hover:bg-amber-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              Doações e Parcerias
-            </a>
-            <a
-              href="https://wa.me/5511918225870"
-              target="_blank"
-              rel="noopener"
-              class="block w-full bg-green-600 hover:bg-green-500 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              WhatsApp
-            </a>
-
-            <a
-              href="mailto:seu@email.com"
-              class="block w-full bg-rose-700 hover:bg-rose-600 text-white py-2.5 px-4 rounded-lg text-center transition shadow"
-            >
-              Enviar E-mail
-            </a>
-          </div>
+        <!-- Links -->
+        <div class="links-container">
+          <a href="https://instagram.com/seu_perfil" target="_blank" rel="noopener" class="link-btn btn-instagram">
+            Instagram
+          </a>
+          <a href="https://linkedin.com/in/seu_perfil" target="_blank" rel="noopener" class="link-btn btn-linkedin">
+            LinkedIn
+          </a>
+          <a href="https://seusite.com" target="_blank" rel="noopener" class="link-btn btn-site">
+            Meu Site
+          </a>
+          <a href="projetos.html" class="link-btn btn-projetos">
+            Projetos e Eventos
+          </a>
+          <a href="doacoes.html" class="link-btn btn-doacoes">
+            Doações e Parcerias
+          </a>
+          <a href="https://wa.me/5511918225870" target="_blank" rel="noopener" class="link-btn btn-whatsapp">
+            WhatsApp
+          </a>
+          <a href="mailto:seu@email.com" class="link-btn btn-email">
+            Enviar E-mail
+          </a>
         </div>
       </div>
     </div>
-    <script>
-      if (typeof tailwind === 'undefined') {
-        console.error('Tailwind CSS não carregou!');
-        document.body.innerHTML = `
-          <div style="padding:2rem;text-align:center;color:#fff;background:#d32f2f">
-            <h2>Erro: Estilos não carregaram</h2>
-            <p>Verifique sua conexão ou recarregue a página.</p>
-          </div>
-        `;
-      }
-    </script>
   </body>
 </html>
