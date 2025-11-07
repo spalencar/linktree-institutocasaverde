@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minha Árvore de Links</title>
     <link rel="icon" href="favicon.png" />
+    <style>
+      /* Fallback visual enquanto o Tailwind carrega */
+      body {
+        background-color: #175850 !important;
+        color: white !important;
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .logo-fallback {
+        max-width: 100px;
+        display: block;
+        margin: 2rem auto;
+      }
+      .title-fallback {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+      }
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -108,5 +128,16 @@
         </div>
       </div>
     </div>
+    <script>
+      if (typeof tailwind === 'undefined') {
+        console.error('Tailwind CSS não carregou!');
+        document.body.innerHTML = `
+          <div style="padding:2rem;text-align:center;color:#fff;background:#d32f2f">
+            <h2>Erro: Estilos não carregaram</h2>
+            <p>Verifique sua conexão ou recarregue a página.</p>
+          </div>
+        `;
+      }
+    </script>
   </body>
 </html>
