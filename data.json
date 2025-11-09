@@ -1,20 +1,23 @@
 [
-    {
-      "id": 1,
+  {
+    "id": 1,
+    "type": "video",
+    "src": "videos/eventosICV.mp4",
+    "thumb": "images/projetos/thumb_eventosICV.jpg",
+    "title": "Evento Anual - Casa Verde 2025",
+    "description": "Gravação do evento de abertura do Instituto Casa Verde, com palestras, apresentações culturais e inauguração de novos espaços."
+  },  
+  
+  {
+      "id": 2,
       "type": "img",
       "src": "images/projetos/oficina_boxe.jpg",
       "thumb": "images/projetos/oficina_boxe.jpg",
       "title": "Projeto Comunitário 2024",
       "description": "Ação social realizada em parceria com a comunidade local, com distribuição de kits escolares e oficinas de arte."
     },
-    {
-      "id": 2,
-      "type": "video",
-      "src": "videos/eventosICV.mp4",
-      "thumb": "images/projetos/thumb_eventosICV.jpg",
-      "title": "Evento Anual - Casa Verde 2025",
-      "description": "Gravação do evento de abertura do Instituto Casa Verde, com palestras, apresentações culturais e inauguração de novos espaços."
-    },
+
+
     {
       "id": 3,
       "type": "img",
