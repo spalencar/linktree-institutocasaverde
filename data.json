@@ -6,24 +6,23 @@
     "thumb": "images/projetos/thumb_eventosICV.jpg",
     "title": "Cursos e Oficinas do Instituto Casa Verde 2025",
     "description": "Gravação das atividades do Instituto Casa Verde, com reforço escolar, atividades esportivas como boxe e futebol, Cursos de Teclado e Violão, Bateria, Informática e inauguração de novos espaços."
-  },  
-  
+  },
+
   {
-      "id": 2,
-      "type": "img",
-      "src": "images/projetos/oficina_boxe.jpg",
-      "thumb": "images/projetos/oficina_boxe.jpg",
-      "title": "Projeto Oficina de Boxe",
-      "description": "Aulas estruturadas em três partes principais: Aquecimento e Condicionamento Físico, Técnica e Prática e a parte final (Relaxamento e Feedback)."
-    },
+    "id": 2,
+    "type": "img",
+    "src": "images/projetos/oficina_boxe.jpg",
+    "thumb": "images/projetos/oficina_boxe.jpg",
+    "title": "Projeto Oficina de Boxe",
+    "description": "Aulas estruturadas em três partes principais: Aquecimento e Condicionamento Físico, Técnica e Prática e a parte final (Relaxamento e Feedback)."
+  },
 
-
-    {
-      "id": 3,
-      "type": "img",
-      "src": "images/projetos/colaboradoras_icv.jpg",
-      "thumb": "images/projetos/colaboradoras_icv.jpg",
-      "title": "Nossas colaboradoras do ICV",
-      "description": "A equipe feminina de colaboradores do Instituto Casa Verde, destaca-se pelo seu papel fundamental na condução e nas diversas frentes de trabalho da instituição."
-    }
-  ]
+  {
+    "id": 3,
+    "type": "img",
+    "src": "images/projetos/colaboradoras_icv.jpg",
+    "thumb": "images/projetos/colaboradoras_icv.jpg",
+    "title": "Nossas colaboradoras do ICV",
+    "description": "A equipe feminina de colaboradores do Instituto Casa Verde, destaca-se pelo seu papel fundamental na condução e nas diversas frentes de trabalho da instituição."
+  }
+]
